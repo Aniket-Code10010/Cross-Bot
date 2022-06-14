@@ -140,12 +140,11 @@ async def msg_poster():
         for chat1, chat2 in list(CROSS):
             try:
                 sent = []
-                msg1 = DATA[chat2] if isinstance(DATA[chat2], list) else [DATA[chat2]]
                 msg2 = DATA[chat1] if isinstance(DATA[chat1], list) else [DATA[chat1]]
                 for m in msg1:
                     sent.append(await bot.send_message(chat1, m))
                 for m in msg2:
-                    sent.append(await bot.send_message(chat1, m))
+                    sent.append(await bot.send_message(chat2, m))
                 await asyncio.sleep(int(INTERVAL))
                 for snt in sent:
                     try:
